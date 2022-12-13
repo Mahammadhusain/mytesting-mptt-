@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Testing Mptt</h1>
+    
+    {% load mptt_tags %}
+    <ul>
+        {% recursetree data %}
+            <li>
+                <a href="/result/?={{node.id}}" id="{{node.id}}" >{{ node.name }}</a>
+                {% if not node.is_leaf_node %}
+                    <ul class="children">
+                        <a href="">{{ children }}</a>
+                    </ul>
+                {% endif %}
+            </li>
+        {% endrecursetree %}
+    </ul>
+
+    
+
+</body>
+</html>
